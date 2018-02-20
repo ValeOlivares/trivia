@@ -1,0 +1,41 @@
+[debug] [2018-02-20T00:43:27.858Z] ----------------------------------------------------------------------
+[debug] [2018-02-20T00:43:27.858Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\valen\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-02-20T00:43:27.858Z] CLI Version:   3.17.4
+[debug] [2018-02-20T00:43:27.858Z] Platform:      win32
+[debug] [2018-02-20T00:43:27.858Z] Node Version:  v8.9.4
+[debug] [2018-02-20T00:43:27.858Z] Time:          Mon Feb 19 2018 21:43:27 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-20T00:43:27.858Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-20T00:43:27.873Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-20T00:43:27.873Z] > authorizing via signed-in user
+[debug] [2018-02-20T00:43:27.873Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-20T00:43:27.873Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/Fe8nuyYceXd7a6XDBbjKlideNpwavNT3vMiccBLf2K4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Feb 19 2018 21:43:27 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-20T00:43:28.264Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-20T00:43:28.280Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/trivia-e31df  
+  
+ Mon Feb 19 2018 21:43:28 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-20T00:43:29.786Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-20T00:43:29.786Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/trivia-e31df/tokens  
+  
+ Mon Feb 19 2018 21:43:29 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-20T00:43:30.653Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\valen\OneDrive\Documentos\Laboratoria\Front-end\OpenTrivia'...
+[info] 
+[debug] [2018-02-20T00:43:30.653Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/trivia-e31df  
+  
+ Mon Feb 19 2018 21:43:30 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-20T00:43:32.513Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-20T00:43:32.513Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/253542748104/clients/_:getWebAppConfig  
+  
+ Mon Feb 19 2018 21:43:32 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-20T00:43:33.181Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] +  hosting: Local server: http://localhost:5000
+

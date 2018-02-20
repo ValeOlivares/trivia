@@ -1,0 +1,50 @@
+body {
+	margin: 0 auto;
+}
+
+#log {
+  background-image: url('../img/pattern.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size:cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;    
+}
+#quizSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.loginPage {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	text-align: center;
+  min-width: 50vw;
+}
+
+#mainPage {
+  background-image: url('../img/pattern2.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size:cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  }
+
+.choosePage{
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  min-width: 50vw;
+}
