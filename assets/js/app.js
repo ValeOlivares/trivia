@@ -1,3 +1,4 @@
+//----FIREBASE ----//
 function trivia() {
 	this.signInButton = document.getElementById('signin');
 	this.signOutButton= document.getElementById('logout');
@@ -34,36 +35,95 @@ window.onload = function() {
 	myTrivia = new trivia();
 };
 
-let display = document.querySelector('.display');
-fetch('https://opentdb.com/api.php?amount=10')
-  .then(function(response) {
-  //Turns the the JSON into a JS object
-  return response.json();
-})
-  .then(function(data) {
-  	console.log(data.results);
+//----FIN FIREBASE ----//
 
-//Let's make some HTML!
-    let html = `<h2><a href="${data.html_url}">${data.login}</a></h2>
-      <p>${data.name}</p>
-      <p>Followers: ${data.followers}</p>
-    `;
+//----TRIVIA ----//
+var trivia;
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var index = 0;
 
-    //Put that HTML on the page
-    display.innerHTML = html;
-  });
+$.ajax({
+    url: "https://opentdb.com/api.php?amount=10&category=27&type=multiple",
+    method: "GET"
+}).done(function(response) {
 
- //Gonna go get some cool data with this.
-// let req = new XMLHttpRequest();
-//
-// //Start the XHR setup.
-// //I am going to GET it at the location in the URL.
-// req.open("GET", "https://api.github.com/users/drpepper");
-// //I want to know when it is done.
-// req.addEventListener("load", reqListener);
-// //Okay, send the request now.
-// req.send();
+    trivia = response;
+    if (index >= trivia.results.length) {
+        $("#display").html("¿ Quieres saber tu puntaje? <br>Correctas: " + correctAnswers + "<br>Incorrectas: " + incorrectAnswers);
+        $("#display").append("<br><br><button class='reset-button' id='replay'>Play Again</button>");
+        $(".reset-button").click(function() {
+            index = 0;
+            correctAnswers = 0;
+            incorrectAnswerss = 0;
+            displayQuestion();
+        });
+    } else { displayQuestion(); }
+		function displayQuestion() {
+        if (index >= trivia.results.length) {
+            $("#display").html("¿Quieres saber tu puntaje? <br>Correctas: " + correctAnswers + "<br>Incorrectas: " + incorrectAnswers);
+            $("#display").append("<br><br><button class='button' id='replay'>Play Again</button>");
+            $(".button").click(function() {
+                index = 0;
+                correctAnswers = 0;
+                incorrectAnswerss = 0;
+                displayQuestion();
+            });
+        }
+        var answers = [trivia.results[index].incorrect_answers[0], trivia.results[index].incorrect_answers[1], trivia.results[index].incorrect_answers[2], trivia.results[index].correct_answer];
+        var rightAnswer = trivia.results[index].correct_answer;
+        function shuffle(array) {
+            var i = 0,
+                j = 0,
+                temp = null
 
+            for (i = array.length - 1; i > 0; i -= 1) {
+                j = Math.floor(Math.random() * (i + 1))
+                temp = array[i]
+                array[i] = array[j]
+                array[j] = temp
+            }
+        }
+        shuffle(answers);
+        $("#display").html(trivia.results[index].question + "<br><br>");
+        for (k = 0; k < answers.length; k++) {
+            $("#display").append("<button class='button' value='" + answers[k] + "'>" + answers[k] + "</button>");
+        }
+        var timeRemaining = 30;
+        $("#display").append("<div id='countdown'></div>");
+        var countdownClock = setInterval(countdown, 1000);
+        function countdown() {
 
+            $("#countdown").html("<br><br>Time remaining: " + timeRemaining);
+            timeRemaining--;
+            if (timeRemaining == -1) {
+            	timeRemaining = 30;
+            	clearInterval(countdownClock);
+            	incorrectAnswer(); }
+        };
+        $(".button").click(function() {
+        		clearInterval(countdownClock);
+            if (this.value == trivia.results[index].correct_answer) {    
+                correctAnswer();
+            }
+            else {
+                incorrectAnswer();
+            }
+        });
+        //Si no contrsta en el tiempo  indicado
+        function incorrectAnswer() {
+            $("#display").html("NOOOOOOO!!!!");
+            incorrectAnswers++;
+            index++;
+            setTimeout(displayQuestion, 3000);
+        }
+        function correctAnswer() {
+            $("#display").html("Correcto! ;D");
+            correctAnswers++;
+            index++;
+            setTimeout(displayQuestion, 3000);
+        }
 
+    }
 
+});
